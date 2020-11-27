@@ -1,0 +1,24 @@
+Question #1 have correct answer 145
+145
+liceum
+42
+Ukrain
+
+Choose correct answer Kiev or Kyiv
+both
+Kiev
+Kyiv
+
+Choose x, where 2*x = 4
+x = 0
+x = 2
+X = -2
+
+Find x, x * x = x * y, where x * y = 64
+x = 2 and -2
+x = 0
+x = y = 8
+X = -8
+x = y = 8 or -8
+
+(end)
