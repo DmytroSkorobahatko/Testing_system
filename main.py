@@ -1,11 +1,12 @@
 from tkinter import *
 
 window = Tk()
-window.config(bg="white")
-window.geometry('500x400')
+window.config(bg="grey")
+window.geometry('400x500')
 
 window.update()
 
+global score
 
 def start_test():
     global text_index
@@ -24,7 +25,7 @@ def start_test():
     # little_menu_frame
     little_menu_frame.pack(fill=X, side=BOTTOM)
     next_btn.pack(side=RIGHT, padx=5)
-    #que_prev.pack(side=RIGHT, padx=5)
+    # que_prev.pack(side=RIGHT, padx=5)
     menu_btn.pack(side=LEFT, padx=5)
     finish_btn.pack(expand=1)
 
@@ -37,9 +38,8 @@ def finish_test():
 
     finish_frame.pack(fill=BOTH, expand=1)
 
-    finish_label.pack(fill=X)
+    finish_label.pack(fill=X, expand=1)
 
-    
 
 def main_menu():
     test_frame.pack_forget()
@@ -48,6 +48,7 @@ def main_menu():
     finish_frame.pack_forget()
 
     main_menu_frame.pack(fill=BOTH, expand=1)
+
 
 def next_question():
     global text_index, text_count, que_list, test_que_ans_dict
@@ -131,10 +132,9 @@ for ans in test_que_ans_dict[que_list[text_index]]:
 
 ans_box.pack(fill=X)
 
-
 print(test_que_ans_dict)
 text_count = len(que_list)
-
+score = text_count
 ##############################
 #     print(key)
 #
@@ -161,11 +161,16 @@ text_count = len(que_list)
 # MENU all \/\/\/
 # Main menu \/
 main_menu_frame = Frame()
-main_menu_frame.config(bg="grey", relief=RAISED, borderwidth=1)
-main_menu_frame.pack(fill=BOTH, expand=1)
+main_menu_frame.config(bg="darkgrey", relief=RAISED, borderwidth=1)
+main_menu_frame.pack(expand=1)
 
-start_btn = Button(main_menu_frame, text="start test", command=start_test)
+start_btn = Button(main_menu_frame, text="start test", bg="white", command=start_test, width=int(window.winfo_width()/10), font=(16))
 start_btn.pack(expand=1)
+
+tip = IntVar()
+
+random_que = Checkbutton(main_menu_frame, text="random Question", bg="darkgray", width=int(window.winfo_width()/10), font=(16))
+random_que.pack(side=TOP)
 # Main Menu /\
 
 #
@@ -173,15 +178,14 @@ finish_frame = Frame()
 finish_frame.config(bg="grey")
 
 finish_label = Label(finish_frame)
-finish_label.config(text="Congrat!")
-
+finish_label.config(text="Congrat! \n Score : " + str(score) + " / " + str(text_count), font=("Arial", 16, "bold"), bg="gray")
 
 # Little Menu \/
 little_menu_frame = Frame()
 little_menu_frame.config(bg="black", borderwidth=4)
 
 next_btn = Button(little_menu_frame, text="next", command=next_question, bg="black", fg="white", font=(16))
-#que_prev = Button(little_menu_frame, text="prev", command=prev_question, bg="black", fg="white")
+# que_prev = Button(little_menu_frame, text="prev", command=prev_question, bg="black", fg="white")
 
 menu_btn = Button(little_menu_frame, text="main menu", command=main_menu, bg="black", fg="white", font=(16))
 
